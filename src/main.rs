@@ -8,8 +8,11 @@ fn main() {
     let _path = args.next();
     let shape_str = match args.next() {
         None => {
-            println!("Shape is necessary");
-            println!("Shape can be Circle, Rectangle, Sphere or Parallelepiped");
+            println!("Usage: Shape x1 x2 x3");
+            println!("\tCircle radius");
+            println!("\tRectangle length width");
+            println!("\tSphere radius");
+            println!("\tParallelepiped length width height");
             return;
         }
         Some(str) => str,
@@ -20,7 +23,7 @@ fn main() {
             if shape_parameters.len() == 1 {
                 Shape::Circle(shape_parameters[0])
             } else {
-                println!("Circle must have radius");
+                println!("Circle must only have radius");
                 return;
             }
         }
@@ -28,7 +31,7 @@ fn main() {
             if shape_parameters.len() == 2 {
                 Shape::Rectangle(shape_parameters[0], shape_parameters[1])
             } else {
-                println!("Rectangle must have length and width");
+                println!("Rectangle must only have length and width");
                 return;
             }
         }
@@ -36,7 +39,7 @@ fn main() {
             if shape_parameters.len() == 1 {
                 Shape::Sphere(shape_parameters[0])
             } else {
-                println!("Sphere must have radius");
+                println!("Sphere must only have radius");
                 return;
             }
         }
@@ -48,7 +51,7 @@ fn main() {
                     shape_parameters[2],
                 )
             } else {
-                println!("Parallelepiped must have length, width and height");
+                println!("Parallelepiped must only have length, width and height");
                 return;
             }
         }
