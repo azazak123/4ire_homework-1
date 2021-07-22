@@ -17,7 +17,10 @@ fn main() {
         }
         Some(str) => str,
     };
-    let shape_parameters: Vec<f32> = args.filter_map(|e| e.parse().ok()).collect();
+    let shape_parameters: Vec<f32> = args
+        .filter_map(|param_str| param_str.parse().ok())
+        .filter(|param| *param > 0f32)
+        .collect();
     let shape = match &shape_str[..] {
         "Circle" => {
             if shape_parameters.len() == 1 {
